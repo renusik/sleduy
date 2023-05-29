@@ -1,0 +1,37 @@
+{% extends "sleduy_blog/base.html" %}
+{% load static %}
+{% block content %}
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'sleduy_blog/img/family-photo-cafe.jpg' %}" alt="..." />
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Следуй</span>
+                        <span class="section-heading-lower">Кафе и рестораны Казани</span>
+                    </h2>
+                    <p class="mb-3"> Отличный вариант для семейного отдыха.
+                        Здесь можно вкусно поесть и выпить бокал хорошего вина с друзьями.
+                        В этом большом городе есть также места, где можно отдохнуть и с детьми.
+                        И это не только детские комнаты в ресторанах.
+                        Мы собрали для вас лучшие заведения Казани, в которых можно весело провести время с семьей и друзьями</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <div class="cta-inner bg-faded text-center rounded">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper"></span>
+                            <span class="section-heading-lower">Попробуйте</span>
+                        </h2>
+                        <p class="mb-0">И вы поймете, что воспользовавшись нашим сайтом, вы непременно найдете отличное место для отдыха со своими близкими!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

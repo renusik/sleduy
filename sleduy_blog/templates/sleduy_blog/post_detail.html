@@ -1,0 +1,59 @@
+{% extends "sleduy_blog/base.html" %}
+{% block content %}
+
+  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    
+    <ol class="carousel-indicators">
+      {% for p in photos %}
+      <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
+        class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+      {% endfor %}
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+      {% for p in photos %}
+      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <img class="d-block w-100" src="{{p.image.url}}" alt="First slide">
+      </div>
+      {% endfor %}
+
+      <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+  </div>
+
+  <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        {% if post.author.first_name != '' and post.author.last_name != '' %}
+          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>
+        {% else %}
+          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+        {% endif %}
+        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+      </div>
+      <h2 class="article-title">{{ post.title }}</h2>
+      {% if post.work_hours == '' %}
+        <p class="article-content"><b>Рабочие часы:</b> не указаны/p>
+      {% else %}
+        <p class="article-content"><b>Рабочие часы:</b> {{ post.work_hours }}</p>
+      {% endif %}
+      <p class="article-content">{{ post.content }}</p>
+
+      {% if post.author == user %}
+      <div class="post-ctrl-container">
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Редактировать</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.id %}">Удалить</a>
+      </div>
+      {% endif %}
+    </div>
+  </article>
+  {% endblock content %}
